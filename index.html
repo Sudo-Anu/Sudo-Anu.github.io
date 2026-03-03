@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aniruddha Raut · Cybersecurity</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/player.css" />
+</head>
+<body>
+
+  <header>
+    <span class="header-logo" onclick="showPage('home')">Aniruddha<span>.</span></span>
+    <nav>
+      <button class="nav-btn active" onclick="showPage('home')"       data-page="home">Home</button>
+      <button class="nav-btn"        onclick="showPage('education')"  data-page="education">Education</button>
+      <button class="nav-btn"        onclick="showPage('skills')"     data-page="skills">Skills</button>
+      <button class="nav-btn"        onclick="showPage('projects')"   data-page="projects">Projects</button>
+      <button class="nav-btn"        onclick="showPage('certs')"      data-page="certs">Certifications</button>
+      <button class="nav-btn"        onclick="showPage('experience')" data-page="experience">Experience</button>
+      <button class="nav-cta"        onclick="showPage('contact')">Contact</button>
+    </nav>
+    <button class="nav-hamburger" onclick="toggleMobileNav()">☰</button>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-close" onclick="toggleMobileNav()">✕</button>
+    <button class="nav-btn" onclick="showPage('home');toggleMobileNav()">Home</button>
+    <button class="nav-btn" onclick="showPage('education');toggleMobileNav()">Education</button>
+    <button class="nav-btn" onclick="showPage('skills');toggleMobileNav()">Skills</button>
+    <button class="nav-btn" onclick="showPage('projects');toggleMobileNav()">Projects</button>
+    <button class="nav-btn" onclick="showPage('certs');toggleMobileNav()">Certifications</button>
+    <button class="nav-btn" onclick="showPage('experience');toggleMobileNav()">Experience</button>
+    <button class="nav-btn" onclick="showPage('contact');toggleMobileNav()">Contact</button>
+  </div>
+
+  <!-- ══ HOME ══ -->
+  <div id="page-home" class="page active">
+    <div class="container">
+      <div class="hero reveal">
+        <div class="hero-left">
+          <div class="hero-badge">Available for Internships</div>
+          <h1>Aniruddha<br><em>Raut</em></h1>
+          <p class="hero-sub">B.Tech Cybersecurity student at JDCOEM, Nagpur. I break things to understand how to protect them — CTF player, home-lab tinkerer, and proud Arch Linux user.</p>
+          <div class="hero-tags">
+            <span class="hero-tag">Penetration Testing</span>
+            <span class="hero-tag">CTF Player</span>
+            <span class="hero-tag">Bug Bounty</span>
+            <span class="hero-tag">Arch + Hyprland</span>
+            <span class="hero-tag">Home Lab</span>
+            <span class="hero-tag">Python</span>
+          </div>
+          <div class="hero-btns">
+            <button class="btn-primary" onclick="showPage('projects')">View Projects ↗</button>
+            <button class="btn-outline" onclick="showPage('contact')">Get in Touch</button>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="float-card" style="top:0;right:-10px">
+            <div class="fc-label">CTF Platform</div>
+            <div class="fc-value">HackTheBox 🟢</div>
+          </div>
+          <!-- PROFILE PHOTO: replace src with assets/images/profile.jpg -->
+          <div class="hero-avatar">
+            <img src="assets/images/profile.jpg" alt="Aniruddha Raut" class="avatar-img"
+              onerror="this.parentElement.innerHTML='🛡️'" />
+          </div>
+          <div class="float-card" style="bottom:20px;left:-10px">
+            <div class="fc-label">Daily Driver</div>
+            <div class="fc-value">Arch + Hyprland</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-row reveal">
+        <div class="stat-box"><div class="stat-n">6</div><div class="stat-l">Certifications</div></div>
+        <div class="stat-box"><div class="stat-n">2</div><div class="stat-l">CTF Platforms</div></div>
+        <div class="stat-box"><div class="stat-n">2029</div><div class="stat-l">Graduating</div></div>
+        <div class="stat-box"><div class="stat-n">∞</div><div class="stat-l">Curiosity</div></div>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <div class="about-snippet reveal">
+        <div>
+          <p class="section-eyebrow">About Me</p>
+          <h2 class="section-title">Security-minded,<br>forever curious.</h2>
+          <p>I'm a first-year B.Tech Cybersecurity student at JD College of Engineering and Management, Nagpur. My interest in security started with curiosity — how does this work, and how can it break?</p>
+          <p style="margin-top:14px">These days I spend time on HackTheBox and TryHackMe, running tools in my home lab, and competing in CTFs. The best way to learn security is by doing it.</p>
+          <div style="margin-top:24px">
+            <button class="btn-outline" onclick="showPage('education')" style="font-size:.85rem;padding:9px 20px">My Education →</button>
+          </div>
+        </div>
+        <div class="fun-facts">
+          <p class="section-eyebrow">Quick Facts</p>
+          <div class="fun-fact-item"><div class="ffi">🐧</div><div class="fft"><strong>Daily driver:</strong> Arch Linux with Hyprland — I rice my desktop and I'm proud of it.</div></div>
+          <div class="fun-fact-item"><div class="ffi">🎯</div><div class="fft"><strong>CTF handles:</strong> HackTheBox @Anu2006 · TryHackMe @anuragraut551</div></div>
+          <div class="fun-fact-item"><div class="ffi">🎵</div><div class="fft"><strong>Hobbies:</strong> Watching anime and listening to music while ricing hyprland and reading research papers at 2 AM.</div></div>
+          <div class="fun-fact-item"><div class="ffi">🔭</div><div class="fft"><strong>Interests:</strong> Bug bounty, home lab self-hosting, academic security research.</div></div>
+          <div class="fun-fact-item"><div class="ffi">📍</div><div class="fft"><strong>Based in:</strong> Nagpur, Maharashtra, India</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ EDUCATION ══ -->
+  <div id="page-education" class="page">
+    <div class="container"><div class="section">
+      <div class="reveal">
+        <p class="section-eyebrow">Background</p>
+        <h2 class="section-title">Education</h2>
+        <p class="section-sub">Building a strong foundation in cybersecurity, networking, and computer science at JDCOEM.</p>
+      </div>
+      <div style="margin-top:40px">
+        <div class="edu-card reveal">
+          <div class="edu-icon">🎓</div>
+          <div>
+            <div class="edu-degree">B.Tech — Cyber Security</div>
+            <div class="edu-school">JD College of Engineering and Management (JDCOEM)</div>
+            <div class="edu-meta">Nagpur, Maharashtra · 2024 – 2029 · 1st / 2nd Year</div>
+            <div class="edu-desc">Specialised undergraduate degree covering ethical hacking, network security, cryptography, digital forensics, and secure software development. Actively competing in CTFs and college technical events.</div>
+            <div class="coursework">
+              <span class="course-tag">Network Security</span><span class="course-tag">Cryptography</span>
+              <span class="course-tag">Digital Forensics</span><span class="course-tag">Operating Systems</span>
+              <span class="course-tag">Web Security</span><span class="course-tag">Ethical Hacking</span>
+              <span class="course-tag">Linux Administration</span><span class="course-tag">Data Structures</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section-divider" style="margin-top:48px"></div>
+      <div class="reveal"><p class="section-eyebrow">Milestones</p><h3 class="sub-heading">Academic Timeline</h3></div>
+      <div class="timeline reveal">
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2025</div><div class="tl-title">Joined JDCOEM, Nagpur</div><div class="tl-sub">Started B.Tech in Cyber Security — immediately set up a home lab and Arch Linux environment.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2025</div><div class="tl-title">Brain Spark 2k25 &amp; Code n Crafts</div><div class="tl-sub"> Both technical events at JDCOEM — sharpening problem-solving and development skills.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2025</div><div class="tl-title">Kascade Certified — IIT Kharagpur</div><div class="tl-sub">Earned certification through the Kascade programme by IIT Kharagpur.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2026</div><div class="tl-title">First CTF — EncipherX 4.0 </div><div class="tl-sub">Competed in the CTF by St. Vincent Palloti College of Engineering. First taste of competitive security challenges.</div></div>
+        <div class="tl-item" style="opacity:.4"><div class="tl-dot" style="background:var(--border);box-shadow:none"></div><div class="tl-year">2029</div><div class="tl-title">Expected Graduation</div><div class="tl-sub">B.Tech Cyber Security — JDCOEM, Nagpur.</div></div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- ══ SKILLS ══ -->
+  <div id="page-skills" class="page">
+    <div class="container"><div class="section">
+      <div class="reveal">
+        <p class="section-eyebrow">Toolkit</p>
+        <h2 class="section-title">Skills &amp; Tools</h2>
+        <p class="section-sub">Built through home lab experiments, CTF challenges, and self-study.</p>
+      </div>
+      <div class="skills-grid" style="margin-top:40px">
+        <div class="skill-cat-card reveal"><div class="sci">⚔️</div><div class="scn">Offensive Security</div><div class="skill-pills"><span class="pill primary">Metasploit</span><span class="pill primary">Burp Suite</span><span class="pill">John the Ripper</span><span class="pill">Netcat</span><span class="pill">SQLmap</span><span class="pill">Hydra</span><span class="pill">Gobuster</span><span class="pill">OWASP Tools</span></div></div>
+        <div class="skill-cat-card reveal" style="transition-delay:.05s"><div class="sci">🌐</div><div class="scn">Networking</div><div class="skill-pills"><span class="pill primary">Nmap</span><span class="pill primary">Wireshark</span><span class="pill">TCP/IP</span><span class="pill">Netcat</span><span class="pill">DNS / DHCP</span><span class="pill">Firewall Config</span><span class="pill">VPN / Tunneling</span><span class="pill">Packet Analysis</span></div></div>
+        <div class="skill-cat-card reveal" style="transition-delay:.1s"><div class="sci">💻</div><div class="scn">Programming &amp; Scripting</div><div class="skill-pills"><span class="pill primary">Python</span><span class="pill primary">Bash</span><span class="pill">Shell Scripting</span><span class="pill">Automation</span><span class="pill">Git / GitHub</span></div></div>
+        <div class="skill-cat-card reveal" style="transition-delay:.15s"><div class="sci">🐧</div><div class="scn">Operating Systems</div><div class="skill-pills"><span class="pill primary">Arch Linux</span><span class="pill primary">Kali Linux</span><span class="pill">Hyprland (WM)</span><span class="pill">Parrot OS</span><span class="pill">Linux CLI</span><span class="pill">VM Setup</span></div></div>
+        <div class="skill-cat-card reveal" style="transition-delay:.2s"><div class="sci">🔬</div><div class="scn">CTF &amp; Research</div><div class="skill-pills"><span class="pill primary">HackTheBox</span><span class="pill primary">TryHackMe</span><span class="pill">OSINT</span><span class="pill">Steganography</span><span class="pill">Reverse Engineering</span><span class="pill">Web Exploitation</span></div></div>
+        <div class="skill-cat-card reveal" style="transition-delay:.25s"><div class="sci">🏠</div><div class="scn">Home Lab</div><div class="skill-pills"><span class="pill primary">Self-hosting</span><span class="pill">Virtual Networking</span><span class="pill">VirtualBox / VMware</span><span class="pill">Docker (learning)</span><span class="pill">pfSense</span></div></div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- ══ PROJECTS ══ -->
+  <div id="page-projects" class="page">
+    <div class="container"><div class="section">
+      <div class="reveal">
+        <p class="section-eyebrow">GitHub · Sudo-Anu</p>
+        <h2 class="section-title">Projects</h2>
+        <p class="section-sub">Personal projects, scripts, and CTF tools. All work in progress — that's the point.</p>
+      </div>
+      <div class="projects-grid" style="margin-top:40px">
+        <a class="project-card reveal" href="https://github.com/Sudo-Anu" target="_blank"><div class="pct"><div class="pi">🔧</div><div class="pa">↗</div></div><div class="pn">Recon Toolkit</div><div class="pd">A Python-based reconnaissance wrapper combining Nmap, Netcat probing, and subdomain enumeration into a single CLI workflow for CTF and lab use.</div><div class="pf"><span class="lang-dot">Python</span></div></a>
+        <a class="project-card reveal" href="https://github.com/Sudo-Anu" target="_blank" style="transition-delay:.05s"><div class="pct"><div class="pi">🕵️</div><div class="pa">↗</div></div><div class="pn">CTF Writeups</div><div class="pd">Documented solutions for HackTheBox and TryHackMe — web exploitation, network forensics, and OSINT. A learning journal as much as a reference.</div><div class="pf"><span class="lang-dot">Markdown</span></div></a>
+        <a class="project-card reveal" href="https://github.com/Sudo-Anu" target="_blank" style="transition-delay:.1s"><div class="pct"><div class="pi">🐧</div><div class="pa">↗</div></div><div class="pn">Hyprland Dotfiles</div><div class="pd">My Arch Linux + Hyprland config — custom waybar, keybinds, themes, scripts. A well-configured desktop is a productive desktop.</div><div class="pf"><span class="lang-dot">Shell</span></div></a>
+        <a class="project-card reveal" href="https://github.com/Sudo-Anu" target="_blank" style="transition-delay:.15s"><div class="pct"><div class="pi">🕸️</div><div class="pa">↗</div></div><div class="pn">Web Security Notes</div><div class="pd">Running knowledge base on OWASP Top 10 — XSS, SQLi, IDOR, SSRF — with Burp Suite methodology notes from lab practice.</div><div class="pf"><span class="lang-dot">Markdown</span></div></a>
+        <a class="project-card reveal" href="https://github.com/Sudo-Anu" target="_blank" style="transition-delay:.2s"><div class="pct"><div class="pi">📡</div><div class="pa">↗</div></div><div class="pn">Home Lab Setup</div><div class="pd">Docs and scripts for my self-hosted home lab — virtual network topology, vulnerable VM setup, and service configs for practice.</div><div class="pf"><span class="lang-dot">Bash</span></div></a>
+        <div class="project-card reveal" style="transition-delay:.25s;cursor:default;border-style:dashed;background:var(--bg)"><div class="pct"><div class="pi">🚧</div></div><div class="pn" style="color:var(--text2)">More Coming Soon</div><div class="pd">Building more tools and documenting experiments. Check GitHub for the latest.</div><div class="pf"><a href="https://github.com/Sudo-Anu" target="_blank" class="ul-link" style="font-size:.8rem">github.com/Sudo-Anu ↗</a></div></div>
+      </div>
+      <div style="margin-top:60px">
+        <div class="reveal"><p class="section-eyebrow">CTF Platforms</p><h3 class="sub-heading">Active Profiles</h3></div>
+        <div class="ctf-grid">
+          <a class="ctf-card reveal" href="https://app.hackthebox.com/public/users/2400093" target="_blank"><div class="ctf-logo">⬡</div><div><div class="ctf-platform">HackTheBox</div><div class="ctf-handle">@Anu2006</div></div></a>
+          <a class="ctf-card reveal" href="https://tryhackme.com/p/anuragraut551" target="_blank" style="transition-delay:.05s"><div class="ctf-logo">🚩</div><div><div class="ctf-platform">TryHackMe</div><div class="ctf-handle">@anuragraut551</div></div></a>
+          <a class="ctf-card reveal" href="https://github.com/Sudo-Anu" target="_blank" style="transition-delay:.1s"><div class="ctf-logo"><svg width="22" height="22" viewBox="0 0 24 24" fill="var(--text2)"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.37.6.1.82-.26.82-.58v-2.18c-3.34.72-4.04-1.6-4.04-1.6-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 5.8c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg></div><div><div class="ctf-platform">GitHub</div><div class="ctf-handle">@Sudo-Anu</div></div></a>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- ══ CERTIFICATIONS ══ -->
+  <div id="page-certs" class="page">
+    <div class="container"><div class="section">
+      <div class="reveal"><p class="section-eyebrow">Credentials</p><h2 class="section-title">Certifications &amp; Achievements</h2><p class="section-sub">Verified credentials, competition participations, and learning milestones.</p></div>
+      <div class="cert-grid" style="margin-top:40px">
+        <div class="cert-card reveal"><div class="cbi">🏆</div><div><div class="cn">EncipherX 4.0 CTF</div><div class="ci">St. Vincent Palloti College of Engineering</div><span class="cert-status earned">Earned</span></div></div>
+        <div class="cert-card reveal" style="transition-delay:.05s"><div class="cbi">🌐</div><div><div class="cn">Web Development &amp; CMS Pathway</div><div class="ci">L&amp;T EduTech</div><span class="cert-status earned">Earned</span></div></div>
+        <div class="cert-card reveal" style="transition-delay:.1s"><div class="cbi">🎓</div><div><div class="cn">Kascade Certified</div><div class="ci">IIT Kharagpur</div><span class="cert-status earned">Earned</span></div></div>
+        <div class="cert-card reveal" style="transition-delay:.15s"><div class="cbi">🔐</div><div><div class="cn">Beginner Guide to Ethical Hacking</div><div class="ci">Skill Up</div><span class="cert-status earned">Earned</span></div></div>
+        <div class="cert-card reveal" style="transition-delay:.2s"><div class="cbi">⚡</div><div><div class="cn">The Brain Spark 2k25</div><div class="ci">JDCOEM Technical Event</div><span class="cert-status earned">Participated</span></div></div>
+        <div class="cert-card reveal" style="transition-delay:.25s"><div class="cbi">🛠️</div><div><div class="cn">Code n Crafts</div><div class="ci">JDCOEM Technical Event</div><span class="cert-status earned">Participated</span></div></div>
+        <div class="cert-card reveal" style="transition-delay:.3s;opacity:.65"><div class="cbi">🎯</div><div><div class="cn">CompTIA Security+ (Target)</div><div class="ci">CompTIA</div><span class="cert-status progress">In Progress</span></div></div>
+        <div class="cert-card reveal" style="transition-delay:.35s;opacity:.65"><div class="cbi">🧪</div><div><div class="cn">eJPT — Junior Penetration Tester</div><div class="ci">eLearnSecurity</div><span class="cert-status progress">Planned</span></div></div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- ══ EXPERIENCE ══ -->
+  <div id="page-experience" class="page">
+    <div class="container"><div class="section">
+      <div class="reveal"><p class="section-eyebrow">Career</p><h2 class="section-title">Experience</h2></div>
+      <div class="exp-empty reveal" style="margin-top:40px"><div class="emoji">🌱</div><h3>Just Getting Started</h3><p>No formal work experience yet — focused on building skills, earning certifications, and competing in CTFs. That changes soon.</p></div>
+      <div class="looking-card reveal" style="margin-top:20px"><h3>Open to Opportunities</h3><p>Looking for cybersecurity internships, bug bounty collabs, and open-source security projects. If you're working on something interesting, let's talk.</p><button class="btn-primary" onclick="showPage('contact')" style="font-size:.88rem">Get In Touch →</button></div>
+      <div style="margin-top:56px">
+        <div class="reveal"><p class="section-eyebrow">What I'm Doing Instead</p><h3 class="sub-heading">Building Hands-On</h3></div>
+        <div class="skills-doing reveal">
+          <div class="doing-item"><div class="di">🏠</div><div><div class="dt">Home Lab</div><div class="ds">Self-hosted VMs, vulnerable-by-design setups, and practice networks.</div></div></div>
+          <div class="doing-item"><div class="di">🚩</div><div><div class="dt">CTF Competitions</div><div class="ds">Active on HackTheBox (@Anu2006) and TryHackMe — grinding rooms and collecting flags.</div></div></div>
+          <div class="doing-item"><div class="di">🐛</div><div><div class="dt">Bug Bounty (Learning)</div><div class="ds">Studying OWASP Top 10 with Burp Suite on practice targets.</div></div></div>
+          <div class="doing-item"><div class="di">📖</div><div><div class="dt">Research &amp; Reading</div><div class="ds">Following CVE disclosures and reading security research papers.</div></div></div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- ══ CONTACT ══ -->
+  <div id="page-contact" class="page">
+    <div class="container"><div class="section">
+      <div class="reveal"><p class="section-eyebrow">Say Hello</p><h2 class="section-title">Get in Touch</h2><p class="section-sub">Open to internships, CTF team-ups, bug bounty collabs, and security conversations.</p></div>
+      <div class="contact-grid" style="margin-top:48px">
+        <div class="reveal">
+          <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-label">Email</div><div class="contact-val"><a href="mailto:anuragraut551@gmail.com">anuragraut551@gmail.com</a></div></div></div>
+          <div class="contact-item"><div class="contact-icon">🐙</div><div><div class="contact-label">GitHub</div><div class="contact-val"><a href="https://github.com/Sudo-Anu" target="_blank">github.com/Sudo-Anu</a></div></div></div>
+          <div class="contact-item"><div class="contact-icon">⬡</div><div><div class="contact-label">HackTheBox</div><div class="contact-val"><a href="https://app.hackthebox.com/public/users/2400093" target="_blank">@Anu2006</a></div></div></div>
+          <div class="contact-item"><div class="contact-icon">🚩</div><div><div class="contact-label">TryHackMe</div><div class="contact-val"><a href="https://tryhackme.com/p/anuragraut551" target="_blank">@anuragraut551</a></div></div></div>
+          <div class="contact-item"><div class="contact-icon">📷</div><div><div class="contact-label">Instagram</div><div class="contact-val"><a href="https://www.instagram.com/sudo.anu/" target="_blank">@sudo.anu</a></div></div></div>
+          <div class="contact-item" style="border:none"><div class="contact-icon">📍</div><div><div class="contact-label">Location</div><div class="contact-val">Nagpur, Maharashtra, India</div></div></div>
+        </div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <footer>
+    <span class="footer-logo">Aniruddha Raut</span>
+    <span class="footer-center">B.Tech Cyber Security · JDCOEM Nagpur · 2024–2029</span>
+    <div class="footer-links">
+      <button onclick="showPage('home')">Home</button>
+      <button onclick="showPage('projects')">Projects</button>
+      <button onclick="showPage('contact')">Contact</button>
+    </div>
+  </footer>
+
+  <!-- ══ MUSIC PLAYER ══ -->
+  <div id="music-fab">
+    <div class="music-player" id="music-player">
+      <div class="player-header">
+        <span class="player-title">Music Player</span>
+        <button class="player-close-btn" onclick="togglePlayer()">✕</button>
+      </div>
+      <!-- PLAYER ART: replace with assets/images/player-art.jpg -->
+      <div class="player-art-wrap">
+        <img id="player-art-img" src="assets/images/player-art.gif" alt="Album Art" class="player-art-img"
+          onerror="this.style.display='none';document.getElementById('player-art-fallback').style.display='flex'" />
+        <div id="player-art-fallback" class="player-art-fallback">🎵</div>
+      </div>
+      <div class="track-info">
+        <div class="track-name" id="track-name">Select a track</div>
+        <div class="track-artist" id="track-artist">—</div>
+      </div>
+      <div class="progress-bar" id="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+      <div class="player-time"><span id="time-current">0:00</span><span id="time-total">0:00</span></div>
+      <div class="player-controls">
+        <button class="ctrl-btn" onclick="prevTrack()">⏮</button>
+        <button class="ctrl-play" id="play-btn" onclick="togglePlay()">▶</button>
+        <button class="ctrl-btn" onclick="nextTrack()">⏭</button>
+      </div>
+      <div class="volume-row">
+        <span class="vol-icon">🔈</span>
+        <input class="vol-slider" type="range" min="0" max="100" value="70" oninput="setVolume(this.value)" id="vol-slider" />
+        <span class="vol-icon">🔊</span>
+      </div>
+      <div class="track-list" id="track-list"></div>
+    </div>
+    <button class="fab-btn" onclick="togglePlayer()" id="fab-btn" title="Music Player">🎵</button>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/player.js"></script>
+</body>
+</html>
