@@ -30,7 +30,7 @@ const Cursor = () => {
       animationFrameId = requestAnimationFrame(animRing);
     };
     
-    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('pointermove', onMouseMove);
     animRing();
     
     // Add hover effects dynamically
@@ -60,7 +60,7 @@ const Cursor = () => {
     observer.observe(document.body, { childList: true, subtree: true });
 
     return () => {
-      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('pointermove', onMouseMove);
       cancelAnimationFrame(animationFrameId);
       observer.disconnect();
     };

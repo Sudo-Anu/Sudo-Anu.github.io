@@ -26,6 +26,33 @@ const MusicPlayer = () => {
   
   const currentTrack = TRACKS[currentTrackIndex];
 
+  const togglePlay = () => {
+    setIsPlaying(!isPlaying);
+  };
+
+  const nextTrack = () => {
+    setCurrentTrackIndex((prev) => (prev + 1) % TRACKS.length);
+    setIsPlaying(true);
+  };
+
+  const prevTrack = () => {
+    setCurrentTrackIndex((prev) => (prev - 1 + TRACKS.length) % TRACKS.length);
+    setIsPlaying(true);
+  };
+
+  const loadTrack = (index) => {
+    setCurrentTrackIndex(index);
+    setIsPlaying(true);
+  };
+
+  const seekTo = (e) => {
+    if (!duration) return;
+    const rect = progressRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const percentage = x / rect.width;
+    audioRef.current.currentTime = percentage * duration;
+  };
+
   useEffect(() => {
     const audio = audioRef.current;
     
@@ -54,33 +81,6 @@ const MusicPlayer = () => {
       audioRef.current.pause();
     }
   }, [isPlaying, currentTrackIndex]);
-
-  const togglePlay = () => {
-    setIsPlaying(!isPlaying);
-  };
-
-  const nextTrack = () => {
-    setCurrentTrackIndex((prev) => (prev + 1) % TRACKS.length);
-    setIsPlaying(true);
-  };
-
-  const prevTrack = () => {
-    setCurrentTrackIndex((prev) => (prev - 1 + TRACKS.length) % TRACKS.length);
-    setIsPlaying(true);
-  };
-
-  const loadTrack = (index) => {
-    setCurrentTrackIndex(index);
-    setIsPlaying(true);
-  };
-
-  const seekTo = (e) => {
-    if (!duration) return;
-    const rect = progressRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const percentage = x / rect.width;
-    audioRef.current.currentTime = percentage * duration;
-  };
 
   const fillWidth = duration ? (currentTime / duration) * 100 : 0;
 
