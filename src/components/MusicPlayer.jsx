@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 const TRACKS = [
-  { title: "DeadWood", artist: "~", src: "/deadwood.mp3" },
-  { title: "Rasputin", artist: "Boney M", src: "/rasputin.mp3" },
-  { title: "Gandagana", artist: "Basiani Ensemble", src: "/gandagan.mp3" },
-  { title: "Victory Lap", artist: "Fred Again", src: "/victory.mp3" },
-  { title: "By My Side", artist: "AP Dhillon", src: "/bymyside.mp3" },
+  { title: "Sadqay", artist: "Aashir Wajahat, NAYEL, Nehaal Naseem", src: "/Sadqay.mp3" },
+  { title: "Do Pall", artist: "Surinder Kaur", src: "/Do Pall.mp3" },
+  { title: "Kaahe Mose", artist: "Garvit - Priyansh", src: "/Kaahe Mose.mp3" },
+  { title: "LAAVAN", artist: "Jasmine Sandlas", src: "/Laavan.mp3" },
+  { title: "Dhoonde Akhiyaan", artist: "Yasser Desai, Rashmi Virag", src: "/DA.mp3" },
+  { title: "After Dark x Sweater Weather", artist: "mikeeysmind", src: "/ADxSW.mp3" },
+  { title: "Good For You", artist: "Selena Gomez", src: "/GFY.mp3" },
 ];
 
 function fmtTime(s) {
@@ -20,10 +22,10 @@ const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  
+
   const audioRef = useRef(null);
   const progressRef = useRef(null);
-  
+
   const currentTrack = TRACKS[currentTrackIndex];
 
   const togglePlay = () => {
@@ -55,19 +57,19 @@ const MusicPlayer = () => {
 
   useEffect(() => {
     const audio = audioRef.current;
-    
+
     const handleTimeUpdate = () => {
       setCurrentTime(audio.currentTime);
       setDuration(audio.duration || 0);
     };
-    
+
     const handleEnded = () => {
       nextTrack();
     };
 
     audio.addEventListener('timeupdate', handleTimeUpdate);
     audio.addEventListener('ended', handleEnded);
-    
+
     return () => {
       audio.removeEventListener('timeupdate', handleTimeUpdate);
       audio.removeEventListener('ended', handleEnded);
@@ -76,7 +78,7 @@ const MusicPlayer = () => {
 
   useEffect(() => {
     if (isPlaying) {
-      audioRef.current.play().catch(() => {});
+      audioRef.current.play().catch(() => { });
     } else {
       audioRef.current.pause();
     }
@@ -88,10 +90,20 @@ const MusicPlayer = () => {
     <>
       <div id="music-player" className={collapsed ? 'collapsed' : ''}>
         <div className="mp-header" onClick={() => setCollapsed(!collapsed)}>
-          <span className="mp-title">music player</span>
-          <button className="mp-toggle" id="mp-toggle-btn">
-            {collapsed ? '+' : '−'}
-          </button>
+          {collapsed ? (
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mp-logo">
+              <path d="M9 18V5l12-2v13"></path>
+              <circle cx="6" cy="18" r="3"></circle>
+              <circle cx="18" cy="16" r="3"></circle>
+            </svg>
+          ) : (
+            <>
+              <span className="mp-title">music player</span>
+              <button className="mp-toggle" id="mp-toggle-btn">
+                −
+              </button>
+            </>
+          )}
         </div>
         <div className="mp-body" id="mp-body" style={{ display: collapsed ? 'none' : 'block' }}>
           <div className="mp-art">
@@ -127,9 +139,9 @@ const MusicPlayer = () => {
           </div>
           <div className="mp-tracks">
             {TRACKS.map((t, i) => (
-              <div 
-                key={i} 
-                className={`mp-track-item ${i === currentTrackIndex ? 'active' : ''}`} 
+              <div
+                key={i}
+                className={`mp-track-item ${i === currentTrackIndex ? 'active' : ''}`}
                 onClick={() => loadTrack(i)}
               >
                 <span className="mp-track-item-num">{String(i + 1).padStart(2, '0')}</span>
