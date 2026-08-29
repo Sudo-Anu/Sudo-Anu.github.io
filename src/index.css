@@ -179,7 +179,7 @@ nav {
 }
 .pill:hover { background: var(--white); color: var(--black); }
 .pill.accent { border-color: var(--white); color: var(--white); }
-.hero-cta { display: flex; gap: 16px; align-items: center; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
 .btn-primary {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -193,6 +193,7 @@ nav {
   text-decoration: none;
   transition: all 0.2s;
   display: inline-block;
+  text-align: center;
 }
 .btn-primary:hover { background: var(--off-white); }
 .btn-ghost {
@@ -207,6 +208,8 @@ nav {
   cursor: none;
   text-decoration: none;
   transition: all 0.2s;
+  display: inline-block;
+  text-align: center;
 }
 .btn-ghost:hover { border-color: var(--white); }
 .avail {
@@ -284,8 +287,11 @@ nav {
 }
 .htb-badge strong { color: var(--white); display: block; font-size: 13px; font-weight: 400; }
 @media (max-width: 800px) {
-  #hero { grid-template-columns: 1fr; }
-  .hero-right { display: none; }
+  #hero { grid-template-columns: 1fr; gap: 60px; padding-top: 120px; }
+  .hero-right { display: flex; justify-content: center; margin-bottom: 40px; }
+  .profile-frame { width: 280px; height: 340px; }
+  .hero-name { font-size: clamp(40px, 12vw, 64px); }
+  .hero-bg-text { font-size: clamp(100px, 20vw, 160px); bottom: 0; right: -10px; }
 }
 
 /* ============================================================
@@ -622,6 +628,24 @@ section { padding: var(--section-gap) 0; position: relative; }
   margin-top: 10px;
 }
 .proj-item:hover .proj-arrow { color: var(--white); transform: translate(4px,-4px); }
+
+@media (max-width: 700px) {
+  .project-swiper .swiper-slide {
+    width: 85vw;
+    padding: 8px;
+  }
+  .proj-item {
+    padding: 24px;
+    height: auto;
+    min-height: 220px;
+  }
+  .proj-name {
+    font-size: 20px;
+  }
+  .proj-desc {
+    font-size: 13px;
+  }
+}
 
 /* ============================================================
    CERTIFICATIONS
@@ -972,3 +996,15 @@ footer {
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--black); }
 ::-webkit-scrollbar-thumb { background: var(--gray-dim); }
+
+/* ============================================================
+   MOBILE / TOUCH OVERRIDES
+   ============================================================ */
+@media (max-width: 800px), (pointer: coarse), (hover: none) {
+  #cursor, #cursor-ring {
+    display: none !important;
+  }
+  * {
+    cursor: auto !important;
+  }
+}
