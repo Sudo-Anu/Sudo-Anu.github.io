@@ -13,7 +13,7 @@ const About = () => {
           <div className="about-grid reveal">
             <div className="about-text">
               <p>
-                First year B.Tech Cybersecurity student at <strong>JD College of Engineering and Management, Nagpur</strong>. My interest in security started with curiosity how does this work, and how can it break?
+                B.Tech Cybersecurity student at <strong>JD College of Engineering and Management, Nagpur</strong>. My interest in security started with curiosity how does this work, and how can it break?
               </p>
               <p>
                 These days I spend time on <strong>HackTheBox</strong> and <strong>TryHackMe</strong>, running tools in my home lab, and competing in CTFs. The best way to learn security is by doing it.
