@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import './index.css';
 
 import Cursor from './components/Cursor';
@@ -12,6 +13,24 @@ import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import MusicPlayer from './components/MusicPlayer';
+import Dashboard from './components/Dashboard';
+
+const Home = () => {
+  return (
+    <>
+      <Navbar />
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Certifications />
+      <Experience />
+      <Contact />
+      <Footer />
+      <MusicPlayer />
+    </>
+  );
+};
 
 function App() {
   useEffect(() => {
@@ -64,16 +83,10 @@ function App() {
   return (
     <>
       <Cursor />
-      <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Certifications />
-      <Experience />
-      <Contact />
-      <Footer />
-      <MusicPlayer />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
     </>
   );
 }

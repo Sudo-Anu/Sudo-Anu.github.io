@@ -1,6 +1,12 @@
 import React from 'react';
+import DailyDriver from './DailyDriver';
+import { useContent } from '../context/ContentContext';
 
 const About = () => {
+  const { content, loading } = useContent();
+
+  const aboutText = content?.about?.body || "Outside of security, I'm obsessed with my Arch Linux + Hyprland setup ricing the desktop, automating workflows, and reading research papers at 2 AM with good music.";
+
   return (
     <>
       <section id="about">
@@ -19,7 +25,7 @@ const About = () => {
                 These days I spend time on <strong>HackTheBox</strong> and <strong>TryHackMe</strong>, running tools in my home lab, and competing in CTFs. The best way to learn security is by doing it.
               </p>
               <p>
-                Outside of security, I'm obsessed with my <strong>Arch Linux + Hyprland</strong> setup ricing the desktop, automating workflows, and reading research papers at 2 AM with good music.
+                {aboutText}
               </p>
             </div>
             <ul className="fact-list">
@@ -52,49 +58,7 @@ const About = () => {
         </div>
       </section>
 
-      <div id="arch-section">
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <div className="arch-bg-word">ARCH</div>
-          <div className="arch-grid reveal">
-            <div>
-              <p className="arch-label">Daily Driver</p>
-              <h3 className="arch-title">ARCH<br/><span>+HYP</span><br/>RLAND</h3>
-              <p className="arch-body">
-                Not just an OS : a philosophy. Full custom Hyprland compositor, hand tuned waybar, custom keybinds and scripts. A productive desktop is one you built yourself.
-              </p>
-              <div className="arch-tags">
-                <span className="pill">Arch Linux</span>
-                <span className="pill">Hyprland WM</span>
-                <span className="pill">Waybar</span>
-                <span className="pill">Custom Scripts</span>
-                <span className="pill">Desktop Ricing</span>
-              </div>
-            </div>
-            <div className="term-window tilt">
-              <div className="term-bar">
-                <div className="term-dot" style={{ background: '#ff5f56' }}></div>
-                <div className="term-dot" style={{ background: '#ffbd2e' }}></div>
-                <div className="term-dot" style={{ background: '#27c93f' }}></div>
-                <span className="term-title">anu@arch — hyprland</span>
-              </div>
-              <div className="term-body">
-                <div><span className="t-prompt">anu@arch ~ $ </span><span className="t-cmd">neofetch</span></div>
-                <div className="t-out hi">       OS: Arch Linux x86_64</div>
-                <div className="t-out hi">       WM: Hyprland</div>
-                <div className="t-out hi">   Shell: zsh 5.9</div>
-                <div className="t-out hi">Terminal: kitty</div>
-                <div className="t-out hi">   Theme: custom (dark)</div>
-                <div className="t-out hi">   Icons: Papirus-Dark</div>
-                <div style={{ marginTop: '8px' }}></div>
-                <div><span className="t-prompt">anu@arch ~ $ </span><span className="t-cmd">cat /proc/passion</span></div>
-                <div className="t-out">security · ricing · ctf · research</div>
-                <div style={{ marginTop: '8px' }}></div>
-                <div><span className="t-prompt">anu@arch ~ $ </span><span className="cursor-blink"></span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <DailyDriver />
     </>
   );
 };

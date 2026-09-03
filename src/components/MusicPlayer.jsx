@@ -1,14 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-
-const TRACKS = [
-  { title: "Sadqay", artist: "Aashir Wajahat, NAYEL, Nehaal Naseem", src: "/Sadqay.mp3" },
-  { title: "Do Pall", artist: "Surinder Kaur", src: "/Do Pall.mp3" },
-  { title: "Kaahe Mose", artist: "Garvit - Priyansh", src: "/Kaahe Mose.mp3" },
-  { title: "LAAVAN", artist: "Jasmine Sandlas", src: "/Laavan.mp3" },
-  { title: "Dhoonde Akhiyaan", artist: "Yasser Desai, Rashmi Virag", src: "/DA.mp3" },
-  { title: "After Dark x Sweater Weather", artist: "mikeeysmind", src: "/ADxSW.mp3" },
-  { title: "Good For You", artist: "Selena Gomez", src: "/GFY.mp3" },
-];
+import { useContent } from '../context/ContentContext';
 
 function fmtTime(s) {
   if (isNaN(s)) return '0:00';
@@ -17,6 +8,8 @@ function fmtTime(s) {
 }
 
 const MusicPlayer = () => {
+  const { content } = useContent();
+  const TRACKS = content?.music || [];
   const [collapsed, setCollapsed] = useState(true);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);

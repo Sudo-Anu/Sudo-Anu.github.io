@@ -1,6 +1,9 @@
 import React from 'react';
+import { useContent } from '../context/ContentContext';
 
 const Hero = () => {
+  const { content } = useContent();
+
   return (
     <section id="hero">
       <div className="container" style={{ display: 'contents' }}>
@@ -12,7 +15,7 @@ const Hero = () => {
           </h1>
           <p className="hero-desc">
             B.Tech Cybersecurity at JDCOEM, Nagpur.<br/>
-            I break things to understand how to protect them : CTF player, home-lab tinkerer, and proud Arch Linux user.
+            {content?.about?.heroIntro || "I break things to understand how to protect them : CTF player, home-lab tinkerer, and proud Arch Linux user."}
           </p>
           <div className="hero-pills">
             <span className="pill accent">Penetration Testing</span>
@@ -37,7 +40,7 @@ const Hero = () => {
           <div className="profile-frame">
             <span className="frame-label">// ANIRUDDHA.RAUT</span>
             <img
-              src="/profile.jpg"
+              src={content?.photoUrl || "/profile.jpg"}
               alt="Aniruddha Raut"
               className="profile-img"
               onError={(e) => {

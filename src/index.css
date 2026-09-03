@@ -450,7 +450,33 @@ section { padding: var(--section-gap) 0; position: relative; }
 }
 .term-dot { width: 10px; height: 10px; border-radius: 50%; }
 .term-title { color: var(--gray); font-size: 10px; margin-left: 8px; letter-spacing: 1px; }
-.term-body { padding: 20px 24px; line-height: 2; }
+.term-body { 
+  padding: 20px 24px; 
+  line-height: 2;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.term-body::-webkit-scrollbar {
+  width: 6px;
+}
+.term-body::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+.term-input-line {
+  display: flex;
+  align-items: center;
+}
+.term-input-line input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  flex: 1;
+  margin-left: 4px;
+}
 .t-prompt { color: var(--gray); }
 .t-cmd { color: var(--white); }
 .t-out { color: #888; }
