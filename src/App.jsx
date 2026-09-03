@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { useContent } from './context/ContentContext';
 import './index.css';
 
 import Cursor from './components/Cursor';
@@ -33,7 +34,12 @@ const Home = () => {
 };
 
 function App() {
+  const { content, loading } = useContent();
+  const location = useLocation();
+
   useEffect(() => {
+    if (loading) return; // Wait for Firebase data to load
+
     // Scroll Reveal Logic
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((e, i) => {
@@ -78,7 +84,7 @@ function App() {
       });
       observer.disconnect();
     };
-  }, []);
+  }, [loading, location.pathname, content]);
 
   return (
     <>

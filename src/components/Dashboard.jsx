@@ -34,6 +34,8 @@ const Dashboard = () => {
   const { content, loading, updateContent } = useContent();
   const [editingContent, setEditingContent] = useState(null);
   const [activeTab, setActiveTab] = useState('profile');
+  const [isSaving, setIsSaving] = useState(false);
+  const [toast, setToast] = useState('');
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -59,11 +61,15 @@ const Dashboard = () => {
   };
 
   const handleSave = async () => {
+    setIsSaving(true);
     try {
       await updateContent(editingContent);
-      alert('Content saved successfully to Firebase!');
+      setToast('Changes saved successfully!');
     } catch (e) {
-      alert('Error saving content: ' + e.message);
+      setToast('Error: ' + e.message);
+    } finally {
+      setIsSaving(false);
+      setTimeout(() => setToast(''), 3000);
     }
   };
 
@@ -85,6 +91,13 @@ const Dashboard = () => {
   return (
     <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--black)', color: 'var(--off-white)', fontFamily: 'var(--font-mono)' }}>
       
+      {/* Toast Notification */}
+      {toast && (
+        <div style={{ position: 'fixed', top: '20px', left: '50%', transform: 'translateX(-50%)', background: 'var(--green)', color: 'var(--black)', padding: '12px 24px', borderRadius: '4px', zIndex: 9999, fontWeight: 'bold', fontFamily: 'var(--font-mono)' }}>
+          {toast}
+        </div>
+      )}
+
       {/* Sidebar */}
       <div style={{ width: '280px', borderRight: '1px solid var(--border)', padding: '30px', display: 'flex', flexDirection: 'column' }}>
         <h2 style={{ fontFamily: 'var(--font-display)', color: 'var(--white)', marginBottom: '40px', letterSpacing: '2px', fontSize: '24px' }}>DASHBOARD</h2>
@@ -123,7 +136,9 @@ const Dashboard = () => {
       <div style={{ flex: 1, padding: '40px 60px', overflowY: 'auto', maxHeight: '100vh' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px', borderBottom: '1px solid var(--border)', paddingBottom: '20px' }}>
            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '32px', color: 'var(--white)', textTransform: 'uppercase', letterSpacing: '2px', margin: 0 }}>{activeTab}</h3>
-           <button onClick={handleSave} className="pill accent" style={{ cursor: 'pointer', fontSize: '14px', border: 'none' }}>SAVE CHANGES</button>
+           <button onClick={handleSave} disabled={isSaving} className="pill accent" style={{ cursor: isSaving ? 'wait' : 'pointer', fontSize: '14px', border: 'none', opacity: isSaving ? 0.7 : 1 }}>
+             {isSaving ? 'SAVING...' : 'SAVE CHANGES'}
+           </button>
         </div>
 
         <div style={{ maxWidth: '800px' }}>
