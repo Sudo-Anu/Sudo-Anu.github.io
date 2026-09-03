@@ -102,7 +102,7 @@ const Dashboard = () => {
       <div style={{ width: '280px', borderRight: '1px solid var(--border)', padding: '30px', display: 'flex', flexDirection: 'column' }}>
         <h2 style={{ fontFamily: 'var(--font-display)', color: 'var(--white)', marginBottom: '40px', letterSpacing: '2px', fontSize: '24px' }}>DASHBOARD</h2>
         
-        {['profile', 'skills', 'certs', 'experience', 'music', 'terminal'].map(tab => (
+        {['profile', 'skills', 'certs', 'experience', 'music', 'terminal', 'hidden links'].map(tab => (
            <button 
              key={tab}
              onClick={() => setActiveTab(tab)}
@@ -262,20 +262,36 @@ const Dashboard = () => {
           {activeTab === 'terminal' && (
             <ArrayEditor
                items={editingContent.terminalCommands || []}
-               itemTemplate={{ command: "new_cmd", output: "Output here" }}
+               itemTemplate={{ command: "newcmd", output: "output text" }}
                onChange={(newArr) => updateField(['terminalCommands'], newArr)}
                renderItem={(item, update) => (
                  <div>
-                   <label style={labelStyle}>Command trigger</label>
+                   <label style={labelStyle}>Command</label>
                    <input type="text" style={inputStyle} value={item.command || ''} onChange={(e) => update('command', e.target.value)} />
                    
-                   <label style={labelStyle}>Command output</label>
-                   <input type="text" style={inputStyle} value={item.output || ''} onChange={(e) => update('output', e.target.value)} />
+                   <label style={labelStyle}>Output</label>
+                   <textarea style={{...inputStyle, height: '80px'}} value={item.output || ''} onChange={(e) => update('output', e.target.value)} />
                  </div>
                )}
             />
           )}
 
+          {activeTab === 'hidden links' && (
+            <ArrayEditor
+               items={editingContent.hiddenCommands || []}
+               itemTemplate={{ command: "secret", url: "https://example.com" }}
+               onChange={(newArr) => updateField(['hiddenCommands'], newArr)}
+               renderItem={(item, update) => (
+                 <div>
+                   <label style={labelStyle}>Hidden Command</label>
+                   <input type="text" style={inputStyle} value={item.command || ''} onChange={(e) => update('command', e.target.value)} />
+                   
+                   <label style={labelStyle}>URL to redirect to</label>
+                   <input type="text" style={inputStyle} value={item.url || ''} onChange={(e) => update('url', e.target.value)} />
+                 </div>
+               )}
+            />
+          )}
         </div>
       </div>
     </div>

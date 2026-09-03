@@ -99,8 +99,13 @@ const DailyDriver = () => {
           )
         });
       } else {
+        const hiddenCmd = (content?.hiddenCommands || []).find(c => c.command.toLowerCase() === cmd.toLowerCase());
         const dynamicCmd = (content?.terminalCommands || []).find(c => c.command.toLowerCase() === cmd.toLowerCase());
-        if (dynamicCmd) {
+        
+        if (hiddenCmd) {
+           newEntries.push({ type: 'output', content: <div className="t-out hi">Redirecting to {hiddenCmd.url}...</div> });
+           window.open(hiddenCmd.url, '_blank');
+        } else if (dynamicCmd) {
            newEntries.push({ type: 'output', content: <div className="t-out hi">{dynamicCmd.output}</div> });
         } else {
            newEntries.push({

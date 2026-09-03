@@ -44,7 +44,10 @@ const DEFAULT_CONTENT = {
     { title: "After Dark x Sweater Weather", artist: "mikeeysmind", src: "/ADxSW.mp3" },
     { title: "Good For You", artist: "Selena Gomez", src: "/GFY.mp3" }
   ],
-  experience: []
+  experience: [],
+  hiddenCommands: [
+    { command: "github", url: "https://github.com/Sudo-Anu" }
+  ]
 };
 
 export const ContentProvider = ({ children }) => {
