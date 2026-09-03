@@ -43,7 +43,8 @@ const DEFAULT_CONTENT = {
     { title: "Dhoonde Akhiyaan", artist: "Yasser Desai, Rashmi Virag", src: "/DA.mp3" },
     { title: "After Dark x Sweater Weather", artist: "mikeeysmind", src: "/ADxSW.mp3" },
     { title: "Good For You", artist: "Selena Gomez", src: "/GFY.mp3" }
-  ]
+  ],
+  experience: []
 };
 
 export const ContentProvider = ({ children }) => {

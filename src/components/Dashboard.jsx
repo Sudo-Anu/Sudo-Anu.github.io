@@ -102,7 +102,7 @@ const Dashboard = () => {
       <div style={{ width: '280px', borderRight: '1px solid var(--border)', padding: '30px', display: 'flex', flexDirection: 'column' }}>
         <h2 style={{ fontFamily: 'var(--font-display)', color: 'var(--white)', marginBottom: '40px', letterSpacing: '2px', fontSize: '24px' }}>DASHBOARD</h2>
         
-        {['profile', 'skills', 'certs', 'music', 'terminal'].map(tab => (
+        {['profile', 'skills', 'certs', 'experience', 'music', 'terminal'].map(tab => (
            <button 
              key={tab}
              onClick={() => setActiveTab(tab)}
@@ -133,15 +133,15 @@ const Dashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div style={{ flex: 1, padding: '40px 60px', overflowY: 'auto', maxHeight: '100vh' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px', borderBottom: '1px solid var(--border)', paddingBottom: '20px' }}>
+      <div style={{ flex: 1, overflowY: 'auto', maxHeight: '100vh', position: 'relative' }}>
+        <div style={{ position: 'sticky', top: 0, zIndex: 10, background: 'var(--black)', padding: '40px 60px 20px 60px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border)' }}>
            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '32px', color: 'var(--white)', textTransform: 'uppercase', letterSpacing: '2px', margin: 0 }}>{activeTab}</h3>
            <button onClick={handleSave} disabled={isSaving} className="pill accent" style={{ cursor: isSaving ? 'wait' : 'pointer', fontSize: '14px', border: 'none', opacity: isSaving ? 0.7 : 1 }}>
              {isSaving ? 'SAVING...' : 'SAVE CHANGES'}
            </button>
         </div>
 
-        <div style={{ maxWidth: '800px' }}>
+        <div style={{ maxWidth: '800px', padding: '40px 60px' }}>
           {activeTab === 'profile' && (
             <div>
               <label style={labelStyle}>Profile Picture URL</label>
@@ -195,6 +195,29 @@ const Dashboard = () => {
                      <option value="progress" style={{color:'black'}}>In Progress</option>
                      <option value="planned" style={{color:'black'}}>Planned</option>
                    </select>
+                 </div>
+               )}
+            />
+          )}
+
+          {activeTab === 'experience' && (
+            <ArrayEditor
+               items={editingContent.experience || []}
+               itemTemplate={{ role: "Security Intern", company: "Company Name", duration: "Jan 2026 - Present", description: "Did some cool stuff." }}
+               onChange={(newArr) => updateField(['experience'], newArr)}
+               renderItem={(item, update) => (
+                 <div>
+                   <label style={labelStyle}>Role / Job Title</label>
+                   <input type="text" style={inputStyle} value={item.role || ''} onChange={(e) => update('role', e.target.value)} />
+                   
+                   <label style={labelStyle}>Company / Organization</label>
+                   <input type="text" style={inputStyle} value={item.company || ''} onChange={(e) => update('company', e.target.value)} />
+                   
+                   <label style={labelStyle}>Duration (e.g., Jan 2025 - Present)</label>
+                   <input type="text" style={inputStyle} value={item.duration || ''} onChange={(e) => update('duration', e.target.value)} />
+                   
+                   <label style={labelStyle}>Description</label>
+                   <textarea style={{...inputStyle, height: '80px'}} value={item.description || ''} onChange={(e) => update('description', e.target.value)} />
                  </div>
                )}
             />
