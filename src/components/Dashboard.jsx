@@ -136,7 +136,23 @@ const Dashboard = () => {
       <div style={{ flex: 1, overflowY: 'auto', maxHeight: '100vh', position: 'relative' }}>
         <div style={{ position: 'sticky', top: 0, zIndex: 10, background: 'var(--black)', padding: '40px 60px 20px 60px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border)' }}>
            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '32px', color: 'var(--white)', textTransform: 'uppercase', letterSpacing: '2px', margin: 0 }}>{activeTab}</h3>
-           <button onClick={handleSave} disabled={isSaving} className="pill accent" style={{ cursor: isSaving ? 'wait' : 'pointer', fontSize: '14px', border: 'none', opacity: isSaving ? 0.7 : 1 }}>
+           <button 
+             onClick={handleSave} 
+             disabled={isSaving} 
+             style={{ 
+               cursor: isSaving ? 'wait' : 'pointer', 
+               fontSize: '12px', 
+               fontFamily: 'var(--font-mono)',
+               background: 'var(--white)',
+               color: 'var(--black)',
+               border: 'none', 
+               padding: '12px 24px',
+               letterSpacing: '1.5px',
+               fontWeight: 'bold',
+               opacity: isSaving ? 0.7 : 1,
+               textTransform: 'uppercase'
+             }}
+           >
              {isSaving ? 'SAVING...' : 'SAVE CHANGES'}
            </button>
         </div>
