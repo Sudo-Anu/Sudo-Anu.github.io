@@ -30,8 +30,8 @@ const DEFAULT_CONTENT = {
     { name: "WEB DEVELOPMENT & CMS PATHWAY", issuer: "L&T EduTech", status: "earned" },
     { name: "KASCADE CERTIFIED", issuer: "IIT Kharagpur", status: "earned" },
     { name: "BEGINNER GUIDE TO ETHICAL HACKING", issuer: "Skill Up", status: "earned" },
-    { name: "THE BRAIN SPARK 2K25", issuer: "JDCOEM Technical Event", status: "participated" },
-    { name: "CODE N CRAFTS", issuer: "JDCOEM Technical Event", status: "participated" },
+    { name: "THE BRAIN SPARK 2K25", issuer: "JDCOEM Technical Event", status: "earned" },
+    { name: "CODE N CRAFTS", issuer: "JDCOEM Technical Event", status: "earned" },
     { name: "COMPTIA SECURITY+", issuer: "CompTIA", status: "progress" },
     { name: "eJPT — JUNIOR PENETRATION TESTER", issuer: "eLearnSecurity", status: "planned" }
   ],
@@ -56,7 +56,7 @@ export const ContentProvider = ({ children }) => {
       try {
         const docRef = doc(db, "portfolio", "content");
         const docSnap = await getDoc(docRef);
-        
+
         if (docSnap.exists()) {
           setContent({ ...DEFAULT_CONTENT, ...docSnap.data() });
         } else {
