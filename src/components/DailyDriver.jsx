@@ -9,12 +9,22 @@ const DailyDriver = () => {
   const [history, setHistory] = useState([]);
   const [input, setInput] = useState('');
   const [loginState, setLoginState] = useState({ step: 'none', email: '' }); // none, email, password
+  const [booted, setBooted] = useState(false);
+  const [booting, setBooting] = useState(false);
   const termBodyRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!loading && history.length === 0) {
-      setHistory([
+    if (loading || booted) return;
+    
+    let observer;
+    let timeouts = [];
+    let isBooting = false; // Use a local variable to prevent re-triggering instead of state that causes re-renders
+
+    const startBootSequence = () => {
+      isBooting = true;
+      setBooting(true);
+      const sequence = [
         { type: 'command', command: 'neofetch' },
         {
           type: 'output',
@@ -33,9 +43,41 @@ const DailyDriver = () => {
         { type: 'command', command: 'cat /proc/passion' },
         { type: 'output', content: <div className="t-out">{content?.about?.heroIntro}</div> },
         { type: 'empty' }
-      ]);
+      ];
+
+      let currentHistory = [];
+      sequence.forEach((item, index) => {
+        const timeout = setTimeout(() => {
+          currentHistory = [...currentHistory, item];
+          setHistory([...currentHistory]);
+          if (index === sequence.length - 1) {
+             setBooted(true);
+             setBooting(false);
+             setTimeout(() => {
+               document.getElementById('term-input')?.focus();
+             }, 100);
+          }
+        }, index * 400 + 400); 
+        timeouts.push(timeout);
+      });
+    };
+
+    if (termBodyRef.current) {
+      observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !isBooting && !booted) {
+          startBootSequence();
+          if (observer) observer.disconnect();
+        }
+      }, { threshold: 0.1 });
+      
+      observer.observe(termBodyRef.current);
     }
-  }, [loading, content, history.length]);
+
+    return () => {
+      if (observer) observer.disconnect();
+      timeouts.forEach(clearTimeout);
+    };
+  }, [loading, content, booted]); // removed booting from dependencies
 
   useEffect(() => {
     if (termBodyRef.current) {
@@ -149,7 +191,7 @@ const DailyDriver = () => {
               <div className="term-dot" style={{ background: '#27c93f' }}></div>
               <span className="term-title">anu@arch — hyprland</span>
             </div>
-            <div className="term-body" ref={termBodyRef} onClick={() => document.getElementById('term-input').focus()} style={{ cursor: 'text' }}>
+            <div className="term-body" ref={termBodyRef} onClick={() => document.getElementById('term-input')?.focus()} style={{ cursor: 'text' }}>
               {history.map((entry, i) => {
                 if (entry.type === 'command') {
                   return (
@@ -168,21 +210,24 @@ const DailyDriver = () => {
                 return null;
               })}
 
-              <div className="term-input-line">
-                {loginState.step === 'none' && <span className="t-prompt">anu@arch ~ $ </span>}
-                {loginState.step === 'email' && <span className="t-prompt">Email: </span>}
-                {loginState.step === 'password' && <span className="t-prompt">Password: </span>}
+              {booted && (
+                <div className="term-input-line">
+                  {loginState.step === 'none' && <span className="t-prompt">anu@arch ~ $ </span>}
+                  {loginState.step === 'email' && <span className="t-prompt">Email: </span>}
+                  {loginState.step === 'password' && <span className="t-prompt">Password: </span>}
 
-                <input
-                  id="term-input"
-                  type={loginState.step === 'password' ? 'password' : 'text'}
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  onKeyDown={handleCommand}
-                  autoComplete="off"
-                  spellCheck="false"
-                />
-              </div>
+                  <input
+                    id="term-input"
+                    type={loginState.step === 'password' ? 'password' : 'text'}
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={handleCommand}
+                    autoComplete="off"
+                    spellCheck="false"
+                    placeholder={loginState.step === 'none' ? "Type 'help' to see commands..." : ""}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -473,10 +473,22 @@ section { padding: var(--section-gap) 0; position: relative; }
   outline: none;
   color: var(--white);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   flex: 1;
   margin-left: 4px;
 }
+
+.term-input-line input::placeholder {
+  color: var(--gray-dim);
+  opacity: 0.5;
+  animation: pulse-placeholder 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse-placeholder {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.7; }
+}
+
 .t-prompt { color: var(--gray); }
 .t-cmd { color: var(--white); }
 .t-out { color: #888; }
@@ -847,10 +859,18 @@ section { padding: var(--section-gap) 0; position: relative; }
 /* ============================================================
    MUSIC PLAYER
    ============================================================ */
-#music-player {
+#floating-controls {
   position: fixed;
-  bottom: 28px; right: 28px;
+  bottom: 28px;
+  right: 28px;
   z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+#music-player {
   width: 280px;
   background: rgba(12,12,12,0.95);
   border: 1px solid var(--border-strong);
@@ -861,10 +881,31 @@ section { padding: var(--section-gap) 0; position: relative; }
 }
 #music-player.collapsed { width: 48px; height: 48px; overflow: hidden; }
 #music-player.collapsed .mp-header {
-  justify-content: center;
   padding: 0;
+  width: 48px; height: 48px;
+  justify-content: center;
+  border: none;
+}
+
+#terminal-btn {
+  width: 48px;
   height: 48px;
-  border-bottom: none;
+  background: rgba(12,12,12,0.95);
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: none;
+  color: var(--gray);
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+#terminal-btn:hover {
+  color: var(--white);
+  border-color: var(--gray);
+}
+#terminal-btn svg {
+  width: 20px; height: 20px;
 }
 .mp-logo {
   color: var(--gray);
