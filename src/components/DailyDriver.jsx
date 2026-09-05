@@ -47,34 +47,34 @@ const DailyDriver = () => {
     if (e.key === 'Enter') {
       const cmd = input.trim();
       let newEntries = [];
-      
+
       if (loginState.step === 'email') {
-         newEntries.push({ type: 'output', content: <div className="t-cmd">Email: {cmd}</div> });
-         setLoginState({ step: 'password', email: cmd });
-         setHistory([...history, ...newEntries]);
-         setInput('');
-         return;
+        newEntries.push({ type: 'output', content: <div className="t-cmd">Email: {cmd}</div> });
+        setLoginState({ step: 'password', email: cmd });
+        setHistory([...history, ...newEntries]);
+        setInput('');
+        return;
       }
-      
+
       if (loginState.step === 'password') {
-         newEntries.push({ type: 'output', content: <div className="t-cmd">Password: ********</div> });
-         setHistory([...history, ...newEntries]);
-         setInput('');
-         try {
-           newEntries.push({ type: 'output', content: <div className="t-out">Authenticating...</div> });
-           setHistory([...history, ...newEntries]);
-           await signInWithEmailAndPassword(auth, loginState.email, cmd);
-           navigate('/dashboard');
-         } catch (error) {
-           const errEntry = { type: 'output', content: <div className="t-out" style={{color: 'red'}}>Login failed: {error.message}</div> };
-           setHistory([...history, ...newEntries, errEntry]);
-           setLoginState({ step: 'none', email: '' });
-         }
-         return;
+        newEntries.push({ type: 'output', content: <div className="t-cmd">Password: ********</div> });
+        setHistory([...history, ...newEntries]);
+        setInput('');
+        try {
+          newEntries.push({ type: 'output', content: <div className="t-out">Authenticating...</div> });
+          setHistory([...history, ...newEntries]);
+          await signInWithEmailAndPassword(auth, loginState.email, cmd);
+          navigate('/dashboard');
+        } catch (error) {
+          const errEntry = { type: 'output', content: <div className="t-out" style={{ color: 'red' }}>Login failed: {error.message}</div> };
+          setHistory([...history, ...newEntries, errEntry]);
+          setLoginState({ step: 'none', email: '' });
+        }
+        return;
       }
 
       newEntries.push({ type: 'command', command: cmd });
-      
+
       if (cmd === '') {
         // do nothing
       } else if (cmd.toLowerCase() === 'clear') {
@@ -89,29 +89,32 @@ const DailyDriver = () => {
           type: 'output',
           content: (
             <div className="t-out">
-              Available commands:<br/>
-              - <span className="t-cmd" style={{marginLeft: "10px"}}>login</span>    : access dashboard<br/>
-              - <span className="t-cmd" style={{marginLeft: "10px"}}>clear</span>    : clear terminal<br/>
-              {dynamicCmds.map(dc => (
-                 <span key={dc}>- <span className="t-cmd" style={{marginLeft: "10px"}}>{dc}</span><br/></span>
-              ))}
-            </div>
+              Available commands:<br />
+              - <span className="t-cmd" style={{ marginLeft: "10px" }}>login</span>    : access dashboard<br />
+              - <span className="t-cmd" style={{ marginLeft: "10px" }}>clear</span>    : clear terminal<br />
+              - <span className="t-cmd" style={{ marginLeft: "10px" }}>/Social_Media</span>    : forward to any social media<br />
+              {
+                dynamicCmds.map(dc => (
+                  <span key={dc}>- <span className="t-cmd" style={{ marginLeft: "10px" }}>{dc}</span><br /></span>
+                ))
+              }
+            </div >
           )
         });
       } else {
         const hiddenCmd = (content?.hiddenCommands || []).find(c => c.command.toLowerCase() === cmd.toLowerCase());
         const dynamicCmd = (content?.terminalCommands || []).find(c => c.command.toLowerCase() === cmd.toLowerCase());
-        
+
         if (hiddenCmd) {
-           newEntries.push({ type: 'output', content: <div className="t-out hi">Redirecting to {hiddenCmd.url}...</div> });
-           window.open(hiddenCmd.url, '_blank');
+          newEntries.push({ type: 'output', content: <div className="t-out hi">Redirecting to {hiddenCmd.url}...</div> });
+          window.open(hiddenCmd.url, '_blank');
         } else if (dynamicCmd) {
-           newEntries.push({ type: 'output', content: <div className="t-out hi">{dynamicCmd.output}</div> });
+          newEntries.push({ type: 'output', content: <div className="t-out hi">{dynamicCmd.output}</div> });
         } else {
-           newEntries.push({
-             type: 'output',
-             content: <div className="t-out">zsh: command not found: {cmd}</div>
-           });
+          newEntries.push({
+            type: 'output',
+            content: <div className="t-out">zsh: command not found: {cmd}</div>
+          });
         }
       }
 
@@ -127,7 +130,7 @@ const DailyDriver = () => {
         <div className="arch-grid reveal">
           <div>
             <p className="arch-label">Daily Driver</p>
-            <h3 className="arch-title">ARCH<br/><span>+HYP</span><br/>RLAND</h3>
+            <h3 className="arch-title">ARCH<br /><span>+HYP</span><br />RLAND</h3>
             <p className="arch-body">
               Not just an OS : a philosophy. Full custom Hyprland compositor, hand tuned waybar, custom keybinds and scripts. A productive desktop is one you built yourself.
             </p>
@@ -164,12 +167,12 @@ const DailyDriver = () => {
                 }
                 return null;
               })}
-              
+
               <div className="term-input-line">
                 {loginState.step === 'none' && <span className="t-prompt">anu@arch ~ $ </span>}
                 {loginState.step === 'email' && <span className="t-prompt">Email: </span>}
                 {loginState.step === 'password' && <span className="t-prompt">Password: </span>}
-                
+
                 <input
                   id="term-input"
                   type={loginState.step === 'password' ? 'password' : 'text'}
