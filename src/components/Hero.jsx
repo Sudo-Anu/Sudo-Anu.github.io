@@ -18,11 +18,11 @@ const Hero = () => {
         <div style={{ paddingLeft: '48px', paddingRight: '24px' }} className="hero-left">
           <div className="hero-label">Cybersecurity Student</div>
           <h1 className="hero-name">
-            ANIRUDDHA<br/>
+            ANIRUDDHA<br />
             <span>RAUT</span>
           </h1>
           <p className="hero-desc">
-            B.Tech Cybersecurity at JDCOEM, Nagpur.<br/>
+            B.Tech Cybersecurity at JDCOEM, Nagpur.<br />
             {content?.about?.heroIntro || "I break things to understand how to protect them : CTF player, home-lab tinkerer, and proud Arch Linux user."}
           </p>
           <div className="hero-pills">
@@ -34,8 +34,8 @@ const Hero = () => {
             <span className="pill">Python</span>
           </div>
           <div className="hero-cta">
-            <a href="/resume.pdf" className="btn-primary" target="_blank" rel="noopener noreferrer">View Resume</a> 
-            <a href="#projects" className="btn-ghost" onClick={(e) => scrollToSection(e, 'projects')}>View Projects</a>
+            <a href="/resume.pdf" className="btn-primary" target="_blank" rel="noopener noreferrer">View Resume</a>
+            <a href="https://github.com/Sudo-Anu?tab=repositories" className="btn-ghost" onClick={(e) => scrollToSection(e, 'projects')}>View Projects</a>
             <a href="#contact" className="btn-ghost" onClick={(e) => scrollToSection(e, 'contact')}>Get in Touch</a>
           </div>
           <div className="avail">
