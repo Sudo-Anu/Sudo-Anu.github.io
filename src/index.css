@@ -294,10 +294,8 @@ nav {
   .hero-bg-text { font-size: clamp(100px, 20vw, 160px); bottom: 0; right: -10px; }
 }
 
-/* ============================================================
-   SECTION WRAPPER
-   ============================================================ */
-section { padding: var(--section-gap) 0; position: relative; }
+section { padding: var(--section-gap) 0; position: relative; scroll-margin-top: 80px; }
+#hero { scroll-margin-top: 0; }
 .section-header {
   display: flex; align-items: baseline; gap: 20px;
   margin-bottom: 64px;

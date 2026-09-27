@@ -40,6 +40,17 @@ function App() {
   useEffect(() => {
     if (loading) return; // Wait for Firebase data to load
 
+    // Auto-scroll to section if navigated with a section path (e.g., #/about, #/skills)
+    const targetSection = location.pathname.replace(/^\//, '');
+    if (targetSection && targetSection !== 'dashboard') {
+      const el = document.getElementById(targetSection);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+
     // Scroll Reveal Logic
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((e, i) => {
@@ -92,6 +103,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </>
   );

@@ -4,6 +4,14 @@ import { useContent } from '../context/ContentContext';
 const Hero = () => {
   const { content } = useContent();
 
+  const scrollToSection = (e, targetId) => {
+    e.preventDefault();
+    const el = document.getElementById(targetId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="hero">
       <div className="container" style={{ display: 'contents' }}>
@@ -27,8 +35,8 @@ const Hero = () => {
           </div>
           <div className="hero-cta">
             <a href="/resume.pdf" className="btn-primary" target="_blank" rel="noopener noreferrer">View Resume</a> 
-            <a href="#projects" className="btn-ghost">View Projects</a>
-            <a href="#contact" className="btn-ghost">Get in Touch</a>
+            <a href="#projects" className="btn-ghost" onClick={(e) => scrollToSection(e, 'projects')}>View Projects</a>
+            <a href="#contact" className="btn-ghost" onClick={(e) => scrollToSection(e, 'contact')}>Get in Touch</a>
           </div>
           <div className="avail">
             <div className="avail-dot"></div>
