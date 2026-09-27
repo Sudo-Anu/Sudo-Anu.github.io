@@ -35,7 +35,7 @@ const Hero = () => {
           </div>
           <div className="hero-cta">
             <a href="/resume.pdf" className="btn-primary" target="_blank" rel="noopener noreferrer">View Resume</a>
-            <a href="https://github.com/Sudo-Anu?tab=repositories" className="btn-ghost">View Projects</a>
+            <a href="https://github.com/Sudo-Anu?tab=repositories" className="btn-ghost" target="_blank" rel="noopener noreferrer">View Projects</a>
             <a href="#contact" className="btn-ghost" onClick={(e) => scrollToSection(e, 'contact')}>Get in Touch</a>
           </div>
           <div className="avail">
