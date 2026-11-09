@@ -53,9 +53,6 @@ const DailyDriver = () => {
           if (index === sequence.length - 1) {
              setBooted(true);
              setBooting(false);
-             setTimeout(() => {
-               document.getElementById('term-input')?.focus();
-             }, 100);
           }
         }, index * 400 + 400); 
         timeouts.push(timeout);

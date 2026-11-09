@@ -83,9 +83,6 @@ const MusicPlayer = () => {
     const terminal = document.getElementById('arch-section');
     if (terminal) {
       terminal.scrollIntoView({ behavior: 'smooth' });
-      setTimeout(() => {
-        document.getElementById('term-input')?.focus();
-      }, 500);
     }
   };
 
